@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+}
+
+
+$bgColor: pink;
+$fontColor:white;
+$fontSize:1.2rem;
+$fontFamily:  'Segoe UI', Tahoma, Geneva, Verdana,
+sans-serif;
+$navBgcolor:#30a7c3;
+$myBorder:2px solid rgb(175,29,29);
+$myLinkSize:1.1rem;
+$bannerBgColor:#cc6699;
+
+body {
+    font-family: $fontFamily;
+    background-color: $bgColor;
+    color: $fontColor;
+    font-size: $fontSize;
+}
+
+header {
+    background-color: $navBgcolor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    header:1rem;
+    img {
+        width: 80px;
+        border: $myBorder;
+        border-radius: 10px;
+        
+
+    }
+}
+
+
+nav {
+    ul {
+        list-style-type: none; 
+
+    }
+    li {
+        display: inline-block;
+        &:hover {
+            text-decoration: underline;
+        }
+
+    }
+    a {
+        color: black;
+        text-decoration: none;
+        padding: 0.5rem;
+    }
+}
+
+main {
+    .banner {
+        background-color: $bannerBgColor;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        line-height: 2rem;
+    }
+    button {
+        padding: 0.5rem;
+        background-color: $navBgcolor;
+        border: none;
+        border-radius: 10px;
+        font-size: $myLinkSize;
+        width: 9rem;
+        margin: 0.5rem;
+        &:hover {
+            background-color: $bgColor;
+        }
+
+
+
+    }
+    img {
+        width: 30%;
+        min-width: 200px;
+        max-width: 400px;
+    }
+}
+
+@mixin myBox ($bgColor,$fontColor){
+    background-color: $bgColor;
+    color:$fontColor;
+    width: 25%;
+    height: 15rem;
+    border: $myBorder;
+    border-radius: 5px;
+    margin: 0.5rem;
+
+    
+}
+
+.cards {
+    display: flex;
+    padding: 1rem;
+    .card1 {
+        @include myBox(brown,white )
+    }.card2 {
+        @include myBox(rgb(42,165,63),black )
+    }.card3 {
+        @include myBox(rgb(165,157,42),white )
+    }.card4 {
+        @include myBox(rgb(42,46,165),white )
+    }
+}
+
+.articles {
+    display: flex;
+    padding: 1rem;
+    .article1 {
+        width: 50%;
+        background-color: grey;
+        border: 1px solid black;
+        border-radius: 10px;
+        height: 10rem;
+        margin: 1rem;
+        padding: 0.5rem;
+
+    }
+    .article2 {
+        @extend .article1;
+        background-color: hotpink;
+    }
+}
+
+$textColor:#990000,#55004e,#0fa8a1,#121456,#64c217;
+
+.footer {
+    .socialIcons{
+        height: 8rem;
+        display: flex;
+        @for $i from 1 to 6 {
+            .social#{$i}{
+                width: 20%;
+                height: 100%;
+                background-color: darken(rgba(205,58,58,0.951),
+                 $i*10);
+                 color: nth($textColor,$i);
+                 font-size: $i * 1rem;
+
+            }
+            
+        }
+    }
+}
+
+
+$dark: 1;
+
+.footer {
+  @if $dark==3 {
+    background-color: white;
+    color: black;
+  } @else if $dark==2 {
+    background-color: gray;
+  } @else {
+    background-color: green;
+  }
+}
+
